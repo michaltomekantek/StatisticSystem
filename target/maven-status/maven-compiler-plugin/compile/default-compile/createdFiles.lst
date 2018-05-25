@@ -1,0 +1,12 @@
+com/clickray/browserspot/statisticsystem/controller/DataProxyOperationStatistic.class
+com/clickray/browserspot/statisticsystem/controller/OperationFailedStatisticRepository.class
+com/clickray/browserspot/statisticsystem/StatisticSystem.class
+com/clickray/browserspot/datasource/sqllite/SQLiteDataSource.class
+com/clickray/browserspot/statisticsystem/model/UserStatistic.class
+com/clickray/browserspot/statisticsystem/rest/OperationStatisticRest.class
+com/clickray/browserspot/datasource/mysql/MySQLDataSource.class
+com/clickray/browserspot/statisticsystem/controller/service/StatisticScheduler.class
+com/clickray/browserspot/statisticsystem/controller/service/DataProxyOperationStatisticController.class
+com/clickray/browserspot/statisticsystem/controller/ManageTestStatistic.class
+com/clickray/browserspot/statisticsystem/controller/service/ManageTestStatisticController.class
+com/clickray/browserspot/statisticsystem/controller/service/DateOperations.class

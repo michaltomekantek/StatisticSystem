@@ -6,11 +6,12 @@
 package com.clickray.browserspot.statisticsystem.controller;
 
 import com.clickray.entitylib.entity.statistic.OperationFailed;
-import java.sql.Timestamp;
-import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+
+import java.sql.Timestamp;
+import java.util.List;
 
 /**
  *

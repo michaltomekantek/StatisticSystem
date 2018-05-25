@@ -1,0 +1,12 @@
+/Users/michalnowak/GitSourceTree/OWN_GIT/StatisticSystem/src/main/java/com/clickray/browserspot/statisticsystem/controller/OperationFailedStatisticRepository.java
+/Users/michalnowak/GitSourceTree/OWN_GIT/StatisticSystem/src/main/java/com/clickray/browserspot/statisticsystem/controller/service/DataProxyOperationStatisticController.java
+/Users/michalnowak/GitSourceTree/OWN_GIT/StatisticSystem/src/main/java/com/clickray/browserspot/statisticsystem/rest/OperationStatisticRest.java
+/Users/michalnowak/GitSourceTree/OWN_GIT/StatisticSystem/src/main/java/com/clickray/browserspot/datasource/sqllite/SQLiteDataSource.java
+/Users/michalnowak/GitSourceTree/OWN_GIT/StatisticSystem/src/main/java/com/clickray/browserspot/statisticsystem/StatisticSystem.java
+/Users/michalnowak/GitSourceTree/OWN_GIT/StatisticSystem/src/main/java/com/clickray/browserspot/statisticsystem/controller/ManageTestStatistic.java
+/Users/michalnowak/GitSourceTree/OWN_GIT/StatisticSystem/src/main/java/com/clickray/browserspot/statisticsystem/controller/service/ManageTestStatisticController.java
+/Users/michalnowak/GitSourceTree/OWN_GIT/StatisticSystem/src/main/java/com/clickray/browserspot/statisticsystem/controller/service/StatisticScheduler.java
+/Users/michalnowak/GitSourceTree/OWN_GIT/StatisticSystem/src/main/java/com/clickray/browserspot/statisticsystem/controller/DataProxyOperationStatistic.java
+/Users/michalnowak/GitSourceTree/OWN_GIT/StatisticSystem/src/main/java/com/clickray/browserspot/datasource/mysql/MySQLDataSource.java
+/Users/michalnowak/GitSourceTree/OWN_GIT/StatisticSystem/src/main/java/com/clickray/browserspot/statisticsystem/model/UserStatistic.java
+/Users/michalnowak/GitSourceTree/OWN_GIT/StatisticSystem/src/main/java/com/clickray/browserspot/statisticsystem/controller/service/DateOperations.java

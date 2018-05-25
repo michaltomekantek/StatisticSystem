@@ -5,15 +5,23 @@
  */
 package com.clickray.browserspot.statisticsystem.rest;
 
-import com.clickray.browserspot.statisticsystem.controller.service.OperationStatisticService;
+import com.clickray.browserspot.statisticsystem.controller.ManageTestStatistic;
+import com.clickray.browserspot.statisticsystem.controller.service.DataProxyOperationStatisticController;
+import com.clickray.browserspot.statisticsystem.controller.service.DateOperations;
+import com.clickray.browserspot.statisticsystem.controller.service.StatisticScheduler;
+import com.clickray.browserspot.statisticsystem.controller.service.UserStatisticController;
+import com.clickray.browserspot.statisticsystem.model.FailedOperation;
+import com.clickray.browserspot.statisticsystem.model.UserStatistic;
+import com.clickray.browserspot.statisticsystem.sqlite.UserStatisticRepository;
 import com.clickray.entitylib.entity.DataProxyOperation;
-import java.util.List;
+import com.clickray.entitylib.entity.statistic.OperationFailed;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -24,13 +32,26 @@ import org.springframework.web.bind.annotation.RestController;
 public class OperationStatisticRest {
     
     @Autowired
-    OperationStatisticService operationStatisticService;
+    DataProxyOperationStatisticController dataProxyOperationStatisticController;
+
+    @Autowired
+    UserStatisticController userStatisticController;
+
+    @Autowired
+    UserStatisticRepository userStatisticRepository;
+
+    @Autowired
+    ManageTestStatistic manageTestStatistic;
+
+
+    @Autowired
+    StatisticScheduler statisticScheduler;
     
     @RequestMapping(value = "status", method = RequestMethod.GET)
     @ResponseBody
     public  List<DataProxyOperation> test(@RequestParam Integer status) {
         
-        return operationStatisticService.getOperationByStatus(status);
+        return dataProxyOperationStatisticController.getOperationByStatus(status);
     }  
     
     /**
@@ -42,19 +63,17 @@ public class OperationStatisticRest {
     @RequestMapping(value = "time", method = RequestMethod.GET)
     @ResponseBody
     public  int getByTime(@RequestParam String startTime, @RequestParam String endTime) {
-        return operationStatisticService.getOperationsByDate(startTime, endTime);
+        return dataProxyOperationStatisticController.getOperationsByDate(startTime, endTime);
     }  
     
     /**
      * http://10.0.0.36:7770/operationstatistic/timeuserstatus?startTime=2018-05-10+15:18:38&endTime=2018-05-10+16:22:16
-     * @param startTime
-     * @param endTime
      * @return 
      */
     @RequestMapping(value = "user", method = RequestMethod.GET)
     @ResponseBody
     public  List<DataProxyOperation> getByUser(@RequestParam String userId) {
-        return operationStatisticService.getOperationByUserId(userId);
+        return dataProxyOperationStatisticController.getOperationByUserId(userId);
     }  
     
     /**
@@ -68,7 +87,7 @@ public class OperationStatisticRest {
     @RequestMapping(value = "timeuserstatus", method = RequestMethod.GET)
     @ResponseBody
     public  int getByTimeAndUserAndStatus(@RequestParam String startTime, @RequestParam String endTime, @RequestParam String idUser, @RequestParam int status) {
-        return operationStatisticService.getOperationsByDateAndUserIdAndStatus(startTime, endTime, idUser, status);
+        return dataProxyOperationStatisticController.getOperationsByDateAndUserIdAndStatus(startTime, endTime, idUser, status);
     }
     
     /**
@@ -78,7 +97,7 @@ public class OperationStatisticRest {
     @RequestMapping(value = "deletedoperation", method = RequestMethod.GET)
     @ResponseBody
     public  List<DataProxyOperation> getDeletedOperations() {
-        return operationStatisticService.getDeletedDataProxyOperations();
+        return dataProxyOperationStatisticController.getDeletedDataProxyOperations();
     } 
     
        /**
@@ -88,7 +107,7 @@ public class OperationStatisticRest {
     @RequestMapping(value = "users", method = RequestMethod.GET)
     @ResponseBody
     public  List<String> removeDeletedOperations() {
-        return operationStatisticService.getAllUsers();
+        return dataProxyOperationStatisticController.getAllUsers();
     }
     
          /**
@@ -97,7 +116,30 @@ public class OperationStatisticRest {
      */
     @RequestMapping(value = "test", method = RequestMethod.GET)
     @ResponseBody
-    public  void test() {
-         operationStatisticService.save();
+    public  long test() {
+
+      //  UserStatistic user = UserStatistic();
+
+        UserStatistic t = new UserStatistic();
+        userStatisticRepository.save(t);
+        UserStatistic b = t;
+        userStatisticRepository.save(b);
+
+        long result = userStatisticRepository.count();
+        return result;
+    }
+
+
+    private Set<FailedOperation> mockOperations(){
+        Set<FailedOperation> failedOperations = new HashSet<>();
+
+        for(int i =0; i<1000; i++){
+            FailedOperation operationFailed = new FailedOperation();
+            operationFailed.setName("operation " + i);
+            failedOperations.add(operationFailed);
+        }
+
+        return failedOperations;
+
     }
 }
